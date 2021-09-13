@@ -13,4 +13,4 @@ jobs:
           current-tag: '1.7.0'
           types-mapping: 'feat:Features,fix:Bug Fixes,docs:Documentation,refactor:Refactoring,chore:Other'
       - run: |
-        echo '${{ steps.changelog.outputs.changelog }}'
+          echo '${{ steps.changelog.outputs.changelog }}'
