@@ -1,0 +1,17 @@
+name: Generate changelog and plugin archive for new release
+on: 
+  workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Simple conventional changelog
+        uses: lstocchi/simple-conventional-changelog@0.0.6
+        id: changelog
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          current-tag: '1.7.0'
+          types-mapping: 'feat:Features,fix:Bug Fixes,docs:Documentation,refactor:Refactoring,chore:Other'
+      - run: |
+        echo '${{ steps.changelog.outputs.changelog }}'
